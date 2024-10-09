@@ -1,0 +1,581 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: white;
+    font-family: 'Courier New', Courier, monospace; /* Changed to a monospace font for an arty feel */
+    color: #fff;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+/* Wrapper for Flexbox Layout */
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure the wrapper covers the viewport height */
+}
+
+/* Hero Section */
+.hero {
+    position: relative; /* Ensures rain effect is positioned correctly */
+    height: 100vh; /* Full viewport height */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: linear-gradient(135deg, #ffffff, #ffffff); /* White background */
+    overflow: hidden; /* Prevent rain from overflowing */
+}
+
+/* Top Pixel Art (Using text.png) */
+.top-pixel-art {
+    margin-top: 10vh; /* Spacing from the top */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.top-pixel-art img {
+    width: 50vw; /* Adjust as needed */
+    max-width: 800px; /* Limit maximum width */
+    height: auto;
+    image-rendering: pixelated; /* Keep the pixel art sharp */
+    image-rendering: crisp-edges;
+    border: 5px solid #fff; /* Added a white border for emphasis */
+    border-radius: 15px; /* Rounded corners for a modern look */
+}
+
+/* Scroll Indicator */
+.scroll-indicator {
+    position: absolute; /* Positioned within the hero section */
+    bottom: 20px;       /* Distance from the bottom */
+    right: 20px;        /* Distance from the right */
+    font-size: 1.5em;
+    color: #333;
+    cursor: pointer;
+    animation: bounce 2s infinite;
+    font-weight: bold;
+    text-shadow: 2px 2px #41184e;
+    /* Removed text-align: center; */
+}
+
+/* Bounce Animation for Scroll Indicator */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-15px);
+    }
+    60% {
+        transform: translateY(-7px);
+    }
+}
+
+/* Container for both pixel arts */
+.pixel-art-container {
+    position: relative; /* Ensures the children are positioned relative to this container */
+    width: 100%;
+    height: 100%; /* Ensure it covers the hero section */
+    z-index: 1; /* Base layer */
+}
+
+/* Bottom Pixel Art (Stem) */
+.bottom-pixel-art {
+    text-align: center;
+    padding-bottom: 0vh; /* Space from the bottom edge */
+    position: absolute; /* Positioning it within the parent */
+    bottom: 0; /* Shifted to the bottom of the hero section */
+    left: 50%; /* Centers the element horizontally */
+    transform: translate(-50%, 10%); /* Adjust the vertical and horizontal positioning */
+    /* Removed z-index to maintain original layering */
+}
+
+.bottom-pixel-art img {
+    width: 65vh; /* Adjust as needed */
+    height: auto;
+    image-rendering: pixelated; /* Keep the pixel art sharp */
+    image-rendering: crisp-edges;
+}
+
+/* Flower Pixel Art */
+.bottom-pixel-art2 {
+    text-align: center;
+    padding-bottom: 0vh; /* Space from the bottom edge */
+    position: absolute; /* Allows it to overlap */
+    bottom: 0; /* Shifted to the bottom of the hero section */
+    left: 50%;
+    transform: translate(-50%, 10%);
+    transform-origin: 50% 90%; /* Adjust the center of rotation slightly upwards (90% from the top) */
+    animation: swayFlower 15s ease-in-out infinite; /* Add animation for continuous swaying */
+    /* Removed z-index to maintain original layering */
+}
+
+.bottom-pixel-art2 img {
+    width: 65vh; /* Adjust as needed */
+    height: auto;
+    image-rendering: pixelated; /* Keep the pixel art sharp */
+    image-rendering: crisp-edges;
+}
+
+/* Define the swaying animation */
+@keyframes swayFlower {
+    0% {
+        transform: translate(-50%, 10%) rotate(0deg); /* Start at neutral */
+    }
+    25% {
+        transform: translate(-50%, 10%) rotate(10deg); /* Sway to one side */
+    }
+    50% {
+        transform: translate(-50%, 10%) rotate(-4deg); /* Sway to the opposite side */
+    }
+    75% {
+        transform: translate(-50%, 10%) rotate(5deg); /* Come back, but not fully */
+    }
+    100% {
+        transform: translate(-50%, 10%) rotate(0deg); /* Return to neutral */
+    }
+}
+
+/* Rain Effect */
+.rain {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Allows clicks to pass through */
+    overflow: hidden;
+    z-index: 5; /* Positioned below pixel arts */
+}
+
+/* Raindrop Styling */
+.rain hr {
+    width: 2px; /* Thin raindrop */
+    height: 15px; /* Length of raindrop */
+    background-color: rgba(174, 194, 224, 0.7); /* Light blue with transparency */
+    position: absolute;
+    top: -20px; /* Start above the hero section */
+    /* left position set via JavaScript */
+    animation-name: rain;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    opacity: 0.5; /* Initial opacity */
+}
+
+/* Rain Animation Keyframes */
+@keyframes rain {
+    to {
+        transform: translateY(100vh); /* Move downwards */
+    }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1000px) {
+    .project-item {
+        width: 100%; /* Full width on smaller screens */
+        margin-bottom: 20px;
+    }
+
+    .projects-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .scroll-indicator {
+        display: none; /* Hide the scroll indicator on small screens */
+    }
+
+    .project-logo {
+        width: 100%;
+    }
+
+    .team-grid {
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+    }
+}
+
+@media (max-width: 600px) {
+    .top-pixel-art img {
+        width: 90vw; /* Nearly full width on small screens */
+        max-width: 100%;
+    }
+
+    .scroll-indicator {
+        display: none; /* Hide the scroll indicator on small screens */
+    }
+
+    .bottom-pixel-art img {
+        width: 60vh;
+    }
+
+    .bottom-pixel-art {
+        transform: translate(-50%, 10%); /* Fixed transform to include horizontal translation */
+    }
+
+    .project-item {
+        width: 90%;
+    }
+
+    .project-logo {
+        width: 80%; /* Image width as a percentage of the project box */
+        height: auto;
+    }
+
+    .project-title {
+        font-size: 1.3em;
+    }
+
+    .project-description {
+        font-size: 0.9em;
+    }
+
+    .project-button {
+        padding: 8px 16px;
+        font-size: 0.9em;
+    }
+
+    .about-title {
+        font-size: 2em;
+    }
+
+    .team-member {
+        width: 80%;
+    }
+
+    /* Adjust rain effect for smaller screens */
+    .rain hr {
+        width: 1px; /* Thinner raindrops */
+        height: 10px; /* Shorter raindrops */
+        background-color: rgba(174, 194, 224, 0.5); /* More transparent */
+        animation-duration: 1.5s; /* Slower fall */
+    }
+}
+
+/* Main Content Area (Projects Section) */
+.main-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    padding: 100px 20px;
+    text-align: center;
+}
+
+.projects-title {
+    color: white;
+    font-size: 2.5em;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+}
+
+.projects-title::after {
+    content: '';
+    position: absolute;
+    width: 50px;
+    height: 4px;
+    background-color: #ffffff;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 2px;
+}
+
+/* Projects Grid */
+.projects-grid {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+    gap: 40px;
+}
+
+/* Project Item (Card) */
+.project-item {
+    background-color: #1a1a1a; /* Dark background for contrast */
+    border: 2px solid #fff; /* White border for visibility */
+    border-radius: 10px;
+    width: 48%; /* Each project takes up 48% of the grid */
+    padding: 20px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.project-item::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    transition: all 0.3s ease;
+}
+
+.project-item:hover::before {
+    width: 300%;
+    height: 300%;
+}
+
+.project-item:hover {
+    transform: translateY(-10px);
+    background-color: #191919; /* Slight color change on hover */
+}
+
+/* Project Logo */
+.project-logo {
+    width: 80%; /* Image width as a percentage of the project box */
+    height: auto;
+    object-fit: contain;
+    margin-bottom: 20px;
+    image-rendering: pixelated; /* Keep the pixel art sharp */
+    image-rendering: crisp-edges;
+}
+
+/* Project Title */
+.project-title {
+    font-size: 1.8em;
+    margin-bottom: 15px;
+    text-transform: capitalize;
+    color: #ffffff; /* Changed color to match theme */
+    position: relative;
+}
+
+.project-title::after {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 2px;
+    background-color: #ffffff;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Project Description */
+.project-description {
+    font-size: 1em;
+    margin-bottom: 20px;
+    line-height: 1.5;
+    color: #ddd; /* Softer color for better readability */
+}
+
+/* Project Button */
+.project-button {
+    background-color: #fff;
+    color: #000;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+}
+
+.project-button:hover {
+    background-color: #412148; /* Pinkish color on hover */
+    color: #fff;
+    transform: scale(1.05);
+}
+
+/* About Section */
+.about-section {
+    background: #000000; /* Light background to contrast with black section */
+    padding: 0px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.about-title {
+    font-size: 3em;
+    margin-bottom: 50px;
+    color: #ffffff;
+    position: relative;
+    display: inline-block;
+}
+
+.about-title::after {
+    content: '';
+    position: absolute;
+    width: 60%;
+    height: 4px;
+    background-color: #ffffff;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 2px;
+}
+
+.team-grid {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    flex-wrap: wrap;
+}
+
+.team-member {
+    background: #000000;
+    border: 3px dashed #000000; /* Dashed border for an unconventional look */
+    border-radius: 15px;
+    padding: 20px;
+    width: 300px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+}
+
+.team-member:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+
+.image-container {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 20px;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 5px solid #ffffff;
+}
+
+.team-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+}
+
+.team-member:hover .team-image {
+    transform: scale(1.1); /* Zoom effect on hover */
+}
+
+.team-name {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #fdfdfd;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.team-description {
+    font-size: 1em;
+    color: #ffffff;
+    line-height: 1.5;
+}
+
+/* Responsive Design */
+
+@media (max-width: 1000px) {
+    .project-item {
+        width: 100%; /* Full width on smaller screens */
+        margin-bottom: 20px;
+    }
+
+    .projects-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .scroll-indicator {
+        display: none; /* Hide the scroll indicator on small screens */
+    }
+
+    .project-logo {
+        width: 100%;
+    }
+
+    .team-grid {
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+    }
+}
+
+@media (max-width: 600px) {
+    .top-pixel-art img {
+        width: 90vw; /* Nearly full width on small screens */
+        max-width: 100%;
+    }
+
+    .scroll-indicator {
+        display: none; /* Hide the scroll indicator on small screens */
+    }
+
+    .bottom-pixel-art img {
+        width: 60vh;
+    }
+
+    .bottom-pixel-art {
+        transform: translate(-50%, 10%); /* Shifted to bottom with upward adjustment */
+    }
+
+    .project-item {
+        width: 90%;
+    }
+
+    .project-logo {
+        width: 80%; /* Image width as a percentage of the project box */
+        height: auto;
+    }
+
+    .project-title {
+        font-size: 1.3em;
+    }
+
+    .project-description {
+        font-size: 0.9em;
+    }
+
+    .project-button {
+        padding: 8px 16px;
+        font-size: 0.9em;
+    }
+
+    .about-title {
+        font-size: 2em;
+    }
+
+    .team-member {
+        width: 80%;
+    }
+
+    /* Adjust rain effect for smaller screens */
+    .rain hr {
+        width: 1px; /* Thinner raindrops */
+        height: 10px; /* Shorter raindrops */
+        background-color: rgba(174, 194, 224, 0.5); /* More transparent */
+        animation-duration: 1.5s; /* Slower fall */
+    }
+}
+
+/* Wrapper for content before footer */
+.content-wrapper {
+    background-color: black; /* Ensure the background is black */
+    padding-bottom: 50px; /* Create the gap */
+}
+
+/* Footer */
+.footer {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: 0.9em;
+    position: relative;
+}

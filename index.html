@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fleur du Chaos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Hero Section -->
+        <div class="hero">
+            <!-- Top Pixel Art (Using text.png) -->
+            <div class="top-pixel-art">
+                <img src="text.png" alt="Fleur du Chaos Pixel Art">
+            </div>
+
+            <!-- Scroll Indicator -->
+            <div class="scroll-indicator" onclick="scrollToProjects()">
+                ↓ Scroll Down ↓
+            </div>
+
+            <!-- Parent container -->
+            <div class="pixel-art-container">
+                <!-- Bottom Pixel Art (Stem) -->
+                <div class="bottom-pixel-art">
+                    <img src="tige.png" alt="Pixel Art Stem">
+                </div>
+                <!-- Flower Pixel Art -->
+                <div class="bottom-pixel-art2">
+                    <img src="fleur_seule.png" alt="Pixel Art Flower">
+                </div>
+            </div>
+
+            <!-- Rain Effect -->
+            <div class="rain"></div>
+        </div>
+
+        <!-- Main Content (Projects Section) -->
+        <div class="main-content" id="projects-section">
+            <h2 class="projects-title">Our Projects</h2>
+            <div class="projects-grid">
+                <!-- Project Item 1 -->
+                <div class="project-item">
+                    <img src="fond_acceuil.png" alt="Yofukashi Project Logo" class="project-logo">
+                    <h3 class="project-title">Yofukashi</h3>
+                    <p class="project-description">
+                        A Cyberpunk visual novel.
+                    </p>
+                    <a href="project1.html" class="project-button">Learn More</a>
+                </div>
+                
+                <!-- Project Item 2 -->
+                <div class="project-item">
+                    <img src="move_on.jpg" alt="Move on Project Logo" class="project-logo">
+                    <h3 class="project-title">Move on</h3>
+                    <p class="project-description">
+                        A journey between cinema and photography.
+                    </p>
+                    <a href="project2.html" class="project-button">Learn More</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- About Section -->
+        <div class="about-section" id="about-section">
+            <h2 class="about-title">Meet the Creators</h2>
+            <div class="team-grid">
+                <!-- Team Member 1 -->
+                <div class="team-member">
+                    <div class="image-container">
+                        <img src="our1.jpg" alt="Ariane, Team Member" class="team-image">
+                    </div>
+                    <h3 class="team-name">Ariane</h3>
+                    <p class="team-description">
+                        Blablablabla blablablabla 
+                    </p>
+                </div>
+                
+                <!-- Team Member 2 -->
+                <div class="team-member">
+                    <div class="image-container">
+                        <img src="our2.jpg" alt="Pinot, Team Member" class="team-image">
+                    </div>
+                    <h3 class="team-name">Pinot</h3>
+                    <p class="team-description">
+                        Blablablabla blablablabla 
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            © 2024 Fleur du Chaos - All Rights Reserved.
+        </div>
+    </div>
+
+    <!-- JavaScript for Rain Effect and Scroll Functionality -->
+    <script>
+        // Function to scroll to the projects section smoothly
+        function scrollToProjects() {
+            document.getElementById('projects-section').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Rain Animation Functionality
+        (function() {
+            const rainContainer = document.querySelector('.rain');
+            const numberOfDrops = 100; // Adjust the number of raindrops
+
+            for (let i = 0; i < numberOfDrops; i++) {
+                const raindrop = document.createElement('hr');
+                raindrop.style.left = Math.floor(Math.random() * window.innerWidth) + 'px';
+                raindrop.style.animationDuration = 0.5 + Math.random() * 0.5 + 's'; // 0.5s to 1s
+                raindrop.style.animationDelay = Math.random() * 5 + 's'; // 0s to 5s
+                raindrop.style.opacity = Math.random() * 0.5 + 0.3; // Varying opacity for depth (0.3 to 0.8)
+                rainContainer.appendChild(raindrop);
+            }
+        })();
+    </script>
+</body>
+</html>
