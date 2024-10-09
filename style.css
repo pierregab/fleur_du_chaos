@@ -97,7 +97,7 @@ body {
 }
 
 .bottom-pixel-art img {
-    width: 65vh; /* Adjust as needed */
+    width: 650px; /* Adjust as needed */
     height: auto;
     image-rendering: pixelated; /* Keep the pixel art sharp */
     image-rendering: crisp-edges;
@@ -117,7 +117,7 @@ body {
 }
 
 .bottom-pixel-art2 img {
-    width: 65vh; /* Adjust as needed */
+    width: 650px; /* Adjust as needed */
     height: auto;
     image-rendering: pixelated; /* Keep the pixel art sharp */
     image-rendering: crisp-edges;
@@ -211,14 +211,6 @@ body {
 
     .scroll-indicator {
         display: none; /* Hide the scroll indicator on small screens */
-    }
-
-    .bottom-pixel-art img {
-        width: 60vh;
-    }
-
-    .bottom-pixel-art {
-        transform: translate(-50%, 10%); /* Fixed transform to include horizontal translation */
     }
 
     .project-item {
