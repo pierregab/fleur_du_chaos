@@ -209,6 +209,14 @@ body {
         max-width: 100%;
     }
 
+    .bottom-pixel-art img {
+        width: 300px;
+    }
+
+    .bottom-pixel-art2 img {
+        width: 300px;
+    }
+
     .scroll-indicator {
         display: none; /* Hide the scroll indicator on small screens */
     }
@@ -509,9 +517,6 @@ body {
         display: none; /* Hide the scroll indicator on small screens */
     }
 
-    .bottom-pixel-art img {
-        width: 40vh;
-    }
 
     .bottom-pixel-art {
         transform: translate(-50%, 10%); /* Shifted to bottom with upward adjustment */
