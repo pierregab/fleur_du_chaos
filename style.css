@@ -209,14 +209,6 @@ body {
         max-width: 100%;
     }
 
-    .bottom-pixel-art img {
-        width: 300px;
-    }
-
-    .bottom-pixel-art2 img {
-        width: 300px;
-    }
-
     .scroll-indicator {
         display: none; /* Hide the scroll indicator on small screens */
     }
